@@ -5,6 +5,8 @@
 		rgba(18, 18, 18, 1) 100%
 	);
 	--black: #191414;
+	--black-trans: #191414d3;
+	--black-trans-light: #292424d3;
 	--green: #1db954;
 	--white: #fff;
 }
@@ -14,6 +16,7 @@ body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	overflow-x: hidden;
 }
 
 a {

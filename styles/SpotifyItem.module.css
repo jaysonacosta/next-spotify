@@ -1,0 +1,12 @@
+.card {
+	height: 300px;
+	min-width: 200px;
+	background-color: var(--black-trans);
+	padding: 0.75rem;
+	border-radius: 0.5em;
+	cursor: pointer;
+	transition: background-color 100ms ease-in;
+}
+.card:hover {
+	background-color: var(--black-trans-light);
+}

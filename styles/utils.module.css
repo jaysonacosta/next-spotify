@@ -1,0 +1,15 @@
+/* Font Size */
+.textLg {
+	font-size: 2rem;
+}
+.textMd {
+	font-size: 1.5rem;
+}
+/* Font Color */
+.textWhite {
+	color: var(--white);
+}
+/* Font Weight */
+.textBold {
+	font-weight: bold;
+}

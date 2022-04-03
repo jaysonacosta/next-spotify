@@ -1,0 +1,6 @@
+.itemTrack {
+	display: flex;
+	gap: 25px;
+	overflow-x: scroll;
+	height: 320px;
+}
