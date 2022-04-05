@@ -5,16 +5,18 @@ import SpotifyItem from './SpotifyItem';
 import { itemTrack } from '../styles/ItemTrack.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 
-export default function ItemTrack({ children, userData }) {
+export default function ItemTrack({ children, spotifyData }) {
 	return (
 		<>
 			<p className={`${textMd} ${textWhite} ${textBold}`}>{children}</p>
 			<div className={itemTrack}>
-				{userData.items.map((spotifyElement, i) => {
+				{spotifyData.map((spotifyElement, i) => {
 					return (
 						<SpotifyItem
 							key={`spotifyElement${i}`}
-							data={spotifyElement}
+							data={
+								spotifyElement.track ? spotifyElement.track : spotifyElement
+							}
 						></SpotifyItem>
 					);
 				})}

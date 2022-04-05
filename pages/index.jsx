@@ -29,13 +29,21 @@ export default function Home() {
 	const { data: session, status } = useSession();
 	const { data: recentlyPlayedData, error: recentlyPlayedError } = useSWR(
 		'/api/getRecentlyPlayed',
-		fetcher
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
 	);
 	const { data: recommendationData, error: recommendationError } = useSWR(
 		'/api/getRecommendations',
-		fetcher
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
 	);
-	console.log(recommendationData);
+	console.log(recentlyPlayedData);
 	if (!session) {
 		return (
 			<>
@@ -49,7 +57,7 @@ export default function Home() {
 			</>
 		);
 	}
-	if (session && recentlyPlayedData) {
+	if (session && recentlyPlayedData && recommendationData) {
 		return (
 			<>
 				<Head>
@@ -61,8 +69,11 @@ export default function Home() {
 				<Layout>
 					<div className={container}>
 						<div className={tracksContainer}>
-							<ItemTrack userData={recentlyPlayedData}>
+							<ItemTrack spotifyData={recentlyPlayedData.items}>
 								Recently Played
+							</ItemTrack>
+							<ItemTrack spotifyData={recommendationData.tracks}>
+								Songs you may like
 							</ItemTrack>
 						</div>
 					</div>

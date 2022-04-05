@@ -8,8 +8,9 @@
 	--black-trans: #191414d3;
 	--black-trans-light: #292424d3;
 	--green: #1db954;
-	--green-light: #69da72;
+	--green-light: #2ec362;
 	--white: #fff;
+	--muted: #c0c0c0;
 }
 html,
 body {
@@ -18,6 +19,7 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	overflow-x: hidden;
+	background-color: var(--black);
 }
 
 a {

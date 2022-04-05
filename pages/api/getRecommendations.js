@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 	const session = await getSession({ req });
 	if (session) {
 		const { accessToken } = session;
-		const seedArtists = [];
+		let seedArtists = '';
 		await axios
 			.get(recentlyPlayedURL, {
 				headers: {
@@ -20,14 +20,11 @@ export default async function handler(req, res) {
 			})
 			.then(({ data }) => {
 				data.items.forEach((item) => {
-					const artistId = item.track.artists[0].id;
-					seedArtists.push(artistId);
+					const artistId = item.track.artists[0].id + ',';
+					seedArtists += artistId;
+					return;
 				});
-			})
-			.catch((error) => {
-				res.status(403).json(error);
 			});
-		console.log(JSON.stringify(seedArtists));
 		await axios
 			.get(recommendationsURL, {
 				headers: {
@@ -35,7 +32,7 @@ export default async function handler(req, res) {
 					'Content-Type': 'application/json',
 				},
 				params: {
-					seed_artists: seedArtists[0],
+					seed_artists: seedArtists,
 				},
 			})
 			.then(({ data }) => {

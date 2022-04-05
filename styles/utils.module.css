@@ -5,9 +5,15 @@
 .textMd {
 	font-size: 1.5rem;
 }
+.textSm {
+	font-size: 0.75rem;
+}
 /* Font Color */
 .textWhite {
 	color: var(--white);
+}
+.textMuted {
+	color: var(--muted);
 }
 /* Font Weight */
 .textBold {

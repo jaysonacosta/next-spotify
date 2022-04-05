@@ -1,6 +1,7 @@
 .wrapper {
+	position: fixed;
 	min-height: 100vh;
-	max-width: 100%;
+	min-width: 250px;
 	background-color: var(--black);
 }
 .sidebarElement {
