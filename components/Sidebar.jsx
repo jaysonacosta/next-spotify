@@ -7,7 +7,7 @@ import {
 } from '../styles/Sidebar.module.css';
 
 // NextAuth
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 export default function Sidebar() {
 	const { data: session } = useSession();
@@ -17,21 +17,13 @@ export default function Sidebar() {
 				<div className={sidebarElement}>Home</div>
 				<div className={sidebarElement}>Search</div>
 				<div className={sidebarElement}>Your Library</div>
-				<div className={sidebarElement}>
-					<button className={btn} onClick={() => signOut()}>
-						Sign Out
-					</button>
-				</div>
 			</div>
 		);
 	}
 	return (
 		<div className={wrapper}>
-			<div className={sidebarElement}>
-				<button className={btn} onClick={() => signIn()}>
-					Sign In
-				</button>
-			</div>
+			<div className={sidebarElement}>Home</div>
+			<div className={sidebarElement}>Search</div>
 		</div>
 	);
 }

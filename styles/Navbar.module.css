@@ -1,0 +1,15 @@
+.wrapper {
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+	height: 70px;
+	position: fixed;
+	top: 0;
+	left: 250px;
+	right: 0;
+}
+.navbarElement {
+
+}

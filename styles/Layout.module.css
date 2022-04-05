@@ -1,9 +1,26 @@
 .wrapper {
 	display: grid;
 	grid-template-columns: 250px auto;
+	grid-template-rows: 70px auto;
 	background: var(--main-bg);
 	min-height: 100vh;
 }
 .mainContent {
 	overflow-x: hidden;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+.sidebar {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+.navbar {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
 }
