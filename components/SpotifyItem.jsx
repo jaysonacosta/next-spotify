@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { truncateString } from '../lib/utils';
 
 // Styles
-import { card } from '../styles/SpotifyItem.module.css';
+import { card, playButton } from '../styles/SpotifyItem.module.css';
 import { textWhite, textBold } from '../styles/utils.module.css';
 
 export default function SpotifyItem({ children, data }) {

@@ -6,7 +6,33 @@
 	border-radius: 0.5em;
 	cursor: pointer;
 	transition: background-color 100ms ease-in;
+	position: relative;
 }
 .card:hover {
 	background-color: var(--black-trans-light);
+}
+.card::after {
+	transform: translateY(15px);
+	transition: transform 100ms ease-in, opacity 100ms ease-in;
+	opacity: 0;
+	content: '‣';
+	text-align: center;
+	font-size: 60px;
+	position: absolute;
+	right: 20px;
+	bottom: 125px;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background-color: var(--green);
+	line-height: 40px;
+	filter: drop-shadow(0 5px 8px var(--black));
+	z-index: 5;
+}
+.card:hover::after {
+	transform: translateY(0);
+	opacity: 1;
+}
+.card::after:hover {
+	background-color: red;
 }

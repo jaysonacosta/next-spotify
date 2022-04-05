@@ -3,4 +3,5 @@
 	gap: 25px;
 	overflow-x: scroll;
 	height: 320px;
+	scrollbar-color: red;
 }

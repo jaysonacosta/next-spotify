@@ -16,31 +16,40 @@ import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 // NextAuth
 import { useSession } from 'next-auth/react';
 
+// Axios
+import axios from 'axios';
+
+// SWR
+
+import useSWR from 'swr';
+const fetcher = async (...args) =>
+	await axios.get(...args).then((res) => res.data);
+
 export default function Home() {
-	const [userData, setData] = useState(null);
-	const [isLoading, setLoading] = useState(false);
 	const { data: session, status } = useSession();
-	useEffect(() => {
-		setLoading(true);
-		fetch('/api/getRecentlyPlayed')
-			.then((res) => {
-				return res.json();
-			})
-			.then((res) => {
-				setData(res);
-				setLoading(false);
-			});
-	}, []);
-	if (isLoading) {
+	const { data: recentlyPlayedData, error: recentlyPlayedError } = useSWR(
+		'/api/getRecentlyPlayed',
+		fetcher
+	);
+	const { data: recommendationData, error: recommendationError } = useSWR(
+		'/api/getRecommendations',
+		fetcher
+	);
+	console.log(recommendationData);
+	if (!session) {
 		return (
-			<Layout>
-				<div className={container}>
-					<p className={`${textMd} ${textWhite} ${textBold}`}>Loading...</p>
-				</div>
-			</Layout>
+			<>
+				<Layout>
+					<div className={container}>
+						<h1 className={`${textMd} ${textWhite} ${textBold}`}>
+							Please Sign In
+						</h1>
+					</div>
+				</Layout>
+			</>
 		);
 	}
-	if (session) {
+	if (session && recentlyPlayedData) {
 		return (
 			<>
 				<Head>
@@ -52,7 +61,9 @@ export default function Home() {
 				<Layout>
 					<div className={container}>
 						<div className={tracksContainer}>
-							<ItemTrack userData={userData}>Recently Played</ItemTrack>
+							<ItemTrack userData={recentlyPlayedData}>
+								Recently Played
+							</ItemTrack>
 						</div>
 					</div>
 				</Layout>
@@ -60,14 +71,10 @@ export default function Home() {
 		);
 	}
 	return (
-		<>
-			<Layout>
-				<div className={container}>
-					<h1 className={`${textMd} ${textWhite} ${textBold}`}>
-						Please Sign In
-					</h1>
-				</div>
-			</Layout>
-		</>
+		<Layout>
+			<div className={container}>
+				<p className={`${textMd} ${textWhite} ${textBold}`}>Loading...</p>
+			</div>
+		</Layout>
 	);
 }
