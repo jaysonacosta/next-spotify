@@ -3,8 +3,17 @@
 	min-height: 100vh;
 	min-width: 250px;
 	background-color: var(--black);
+	padding-top: 70px;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 .sidebarElement {
-	color: var(--white);
 	padding: 1rem;
+}
+.icon {
+	margin-right: 1rem;
+}
+.sidebarElement a {
+	padding: 0;
+	margin: 0;
 }
