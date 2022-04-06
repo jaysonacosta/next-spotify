@@ -5,6 +5,7 @@ import Image from 'next/image';
 // Components
 import Layout from '../components/Layout';
 import ItemTrack from '../components/ItemTrack';
+import ItemTrackSkeleton from '../components/ItemTrackSkeleton';
 
 // Hooks
 import { useEffect, useState } from 'react';
@@ -43,7 +44,6 @@ export default function Home() {
 			revalidateIfStale: false,
 		}
 	);
-	console.log(recentlyPlayedData);
 	if (!session) {
 		return (
 			<>
@@ -73,7 +73,7 @@ export default function Home() {
 								Recently Played
 							</ItemTrack>
 							<ItemTrack spotifyData={recommendationData.tracks}>
-								Songs you may like
+								Songs you might like
 							</ItemTrack>
 						</div>
 					</div>
@@ -84,7 +84,10 @@ export default function Home() {
 	return (
 		<Layout>
 			<div className={container}>
-				<p className={`${textMd} ${textWhite} ${textBold}`}>Loading...</p>
+				<div className={tracksContainer}>
+					<ItemTrackSkeleton>Recently Played</ItemTrackSkeleton>
+					<ItemTrackSkeleton>Songs you might like</ItemTrackSkeleton>
+				</div>
 			</div>
 		</Layout>
 	);
