@@ -1,9 +1,9 @@
 .wrapper {
-    background-color: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 1rem;
+	background-color: var(--black);
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 1rem;
 	height: 70px;
 	position: fixed;
 	top: 0;
@@ -11,5 +11,43 @@
 	right: 0;
 }
 .navbarElement {
-
+	position: relative;
+}
+.iconWrapper {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem;
+	background-color: var(--black-light);
+	border-radius: 1rem;
+	cursor: pointer;
+}
+.iconWrapper:hover {
+	background-color: var(--black-trans-light);
+}
+.icon {
+	margin-right: 0.75rem;
+}
+.dropdownMenu {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 60px;
+	right: 0;
+	height: 100px;
+	width: 150px;
+	background-color: var(--black);
+	padding: 0.25em;
+	border-radius: 0.5em;
+}
+.menuItem {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	background-color: var(--black);
+	padding: 0.5em;
+	border-radius: 0.5em;
+}
+.menuItem:hover {
+	background-color: var(--black-light);
 }
