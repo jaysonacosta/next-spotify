@@ -52,6 +52,14 @@ export default function Home() {
 			revalidateIfStale: false,
 		}
 	);
+	const { data: topTracksData, error: topTracksError } = useSWR(
+		'/api/getTopTracks',
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
+	);
 	if (!session) {
 		return (
 			<>
@@ -85,6 +93,9 @@ export default function Home() {
 							</ItemTrack>
 							<ItemTrack artists spotifyData={topArtistsData.items}>
 								Your top artists
+							</ItemTrack>
+							<ItemTrack spotifyData={topTracksData.items}>
+								Your top tracks
 							</ItemTrack>
 						</div>
 					</div>
