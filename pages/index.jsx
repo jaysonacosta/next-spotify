@@ -44,6 +44,14 @@ export default function Home() {
 			revalidateIfStale: false,
 		}
 	);
+	const { data: topArtistsData, error: topArtistsError } = useSWR(
+		'/api/getTopArtists',
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
+	);
 	if (!session) {
 		return (
 			<>
@@ -57,7 +65,7 @@ export default function Home() {
 			</>
 		);
 	}
-	if (session && recentlyPlayedData && recommendationData) {
+	if (session && recentlyPlayedData && recommendationData && topArtistsData) {
 		return (
 			<>
 				<Head>
@@ -74,6 +82,9 @@ export default function Home() {
 							</ItemTrack>
 							<ItemTrack spotifyData={recommendationData.tracks}>
 								Songs you might like
+							</ItemTrack>
+							<ItemTrack artists spotifyData={topArtistsData.items}>
+								Your top artists
 							</ItemTrack>
 						</div>
 					</div>

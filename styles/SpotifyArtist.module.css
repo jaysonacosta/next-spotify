@@ -1,0 +1,39 @@
+.card {
+	height: 300px;
+	min-width: 200px;
+	background-color: var(--black-trans);
+	padding: 0.75rem;
+	border-radius: 0.5em;
+	cursor: pointer;
+	transition: background-color 100ms ease-in;
+	position: relative;
+}
+.card:hover {
+	background-color: var(--black-trans-light);
+}
+.image {
+	border-radius: 50%;
+}
+.playButton {
+	transform: translateY(15px);
+	transition: transform 100ms ease-in, opacity 100ms ease-in;
+	opacity: 0;
+	position: absolute;
+	right: 20px;
+	bottom: 125px;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background-color: var(--green);
+	filter: drop-shadow(0 5px 8px var(--black));
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.card:hover .playButton {
+	transform: translateY(0);
+	opacity: 1;
+}
+.playButton:hover {
+	background-color: var(--green-light);
+}

@@ -9,6 +9,7 @@
 	top: 0;
 	left: 250px;
 	right: 0;
+	z-index: 1;
 }
 .navbarElement {
 	position: relative;

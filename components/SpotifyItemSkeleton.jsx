@@ -3,16 +3,15 @@ import {
 	card,
 	loadingImage,
 	loadingText,
-	first,
-	second,
+	pulse,
 } from '../styles/SpotifyItemSkeleton.module.css';
 
 export default function SpotifyItemSkeleton() {
 	return (
 		<div className={card}>
-			<div className={loadingImage}></div>
-			<div className={loadingText}></div>
-			<div className={loadingText}></div>
+			<div className={`${loadingImage} ${pulse}`}></div>
+			<div className={`${loadingText} ${pulse}`}></div>
+			<div className={`${loadingText} ${pulse}`}></div>
 		</div>
 	);
 }

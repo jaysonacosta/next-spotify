@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { truncateString } from '../lib/utils';
 
 // Styles
-import { card, playButton } from '../styles/SpotifyItem.module.css';
+import { card, playButton, image } from '../styles/SpotifyArtist.module.css';
 import {
 	textWhite,
 	textMuted,
@@ -17,15 +17,14 @@ export default function SpotifyItem({ data }) {
 	return (
 		<div className={card}>
 			<Image
-				src={data.album.images[0].url}
+				src={data.images[0].url}
 				height={640}
 				width={640}
-				alt='Album Cover'
+				className={image}
+				alt='Artist Photo'
 			></Image>
 			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name)}</p>
-			<p className={`${textMuted} ${textBold} ${textSm}`}>
-				{data.artists[0].name}
-			</p>
+			<p className={`${textMuted} ${textBold} ${textSm}`}>Artist</p>
 			<div className={playButton}>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
