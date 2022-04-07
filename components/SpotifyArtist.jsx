@@ -21,9 +21,11 @@ export default function SpotifyItem({ data }) {
 	return (
 		<div className={card}>
 			<Image
-				src={data.images[0].url}
-				height={640}
-				width={640}
+				src={
+					data.images[0] ? data.images[0].url : '/missing-artist.jpg'
+				}
+				height={176}
+				width={176}
 				className={image}
 				alt='Artist Photo'
 			></Image>

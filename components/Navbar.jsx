@@ -6,6 +6,7 @@ import {
 	icon,
 	menuItem,
 	iconWrapper,
+	search,
 } from '../styles/Navbar.module.css';
 import { btn, textWhite, textSm, textBold } from '../styles/utils.module.css';
 
@@ -18,13 +19,27 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 
 // Hooks
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
-export default function Navbar() {
+export default function Navbar({ updateQuery }) {
 	const [isActive, setState] = useState(false);
 	const { data: session } = useSession();
+	const router = useRouter();
 	if (session) {
 		return (
 			<div className={wrapper}>
+				<div className={navbarElement}>
+					{router.pathname == '/search' && (
+						<input
+							className={search}
+							type='text'
+							placeholder='Artists, songs, or podcasts'
+							onChange={(stroke) => {
+								updateQuery(stroke.target.value);
+							}}
+						/>
+					)}
+				</div>
 				<div className={navbarElement}>
 					<div
 						className={iconWrapper}

@@ -21,14 +21,14 @@ export default function SpotifyItem({ data }) {
 	return (
 		<div className={card}>
 			<Image
-				src={data.album.images[0].url}
-				height={640}
-				width={640}
+				src={data.album ? data.album.images[0].url : data.images[0].url}
+				height={176}
+				width={176}
 				alt='Album Cover'
 			></Image>
 			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name)}</p>
 			<p className={`${textMuted} ${textBold} ${textSm}`}>
-				{data.artists[0].name}
+				{truncateString(data.artists[0].name)}
 			</p>
 			<div className={playButton}>
 				<FontAwesomeIcon icon={faPlay} fontSize='25'></FontAwesomeIcon>

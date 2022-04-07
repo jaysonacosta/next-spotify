@@ -7,6 +7,18 @@ import { itemTrack } from '../styles/ItemTrack.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 
 export default function ItemTrack({ children, spotifyData, artists }) {
+	if (spotifyData.length === 0) {
+		return (
+			<>
+				<p className={`${textMd} ${textWhite} ${textBold}`}>{children}</p>
+				<div className={itemTrack}>
+					<p className={`${textMd} ${textWhite} ${textBold}`}>
+						No results found.
+					</p>
+				</div>
+			</>
+		);
+	}
 	if (artists) {
 		return (
 			<>

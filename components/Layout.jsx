@@ -10,11 +10,11 @@ import {
 	sidebar,
 } from '../styles/Layout.module.css';
 
-export default function Layout({ children }) {
+export default function Layout({ children, updateQuery }) {
 	return (
 		<div className={wrapper}>
 			<header className={navbar}>
-				<Navbar></Navbar>
+				<Navbar updateQuery={updateQuery}></Navbar>
 			</header>
 			<nav className={sidebar}>
 				<Sidebar></Sidebar>

@@ -5,6 +5,7 @@ import Image from 'next/image';
 // Components
 import Layout from '../components/Layout';
 import ItemTrack from '../components/ItemTrack';
+import ItemTrackSkeleton from '../components/ItemTrackSkeleton';
 
 // Hooks
 import { useEffect, useState } from 'react';
@@ -27,14 +28,16 @@ const fetcher = async (...args) =>
 
 export default function Home() {
 	const { data: session, status } = useSession();
-	// const { data: recentlyPlayedData, error: recentlyPlayedError } = useSWR(
-	// 	'/api/getRecentlyPlayed',
-	// 	fetcher,
-	// 	{
-	// 		revalidateOnFocus: false,
-	// 		revalidateIfStale: false,
-	// 	}
-	// );
+	const [query, updateQuery] = useState('');
+	const { data: searchResults, error: searchResultsError } = useSWR(
+		`api/search?query=${query}`,
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
+	);
+	console.log(searchResults);
 	if (!session) {
 		return (
 			<>
@@ -57,9 +60,33 @@ export default function Home() {
 					<link rel='icon' href='/favicon.ico' />
 				</Head>
 
-				<Layout>
+				<Layout updateQuery={updateQuery}>
 					<div className={container}>
 						<p className={`${textWhite} ${textBold} ${textMd}`}>Search</p>
+						{!searchResults && query && (
+							<ItemTrackSkeleton>Tracks</ItemTrackSkeleton>
+						)}
+						{!searchResults && query && (
+							<ItemTrackSkeleton>Albums</ItemTrackSkeleton>
+						)}
+						{!searchResults && query && (
+							<ItemTrackSkeleton>Artists</ItemTrackSkeleton>
+						)}
+						{searchResults && (
+							<ItemTrack spotifyData={searchResults.tracks.items}>
+								Tracks
+							</ItemTrack>
+						)}
+						{searchResults && (
+							<ItemTrack spotifyData={searchResults.albums.items}>
+								Albums
+							</ItemTrack>
+						)}
+						{searchResults && (
+							<ItemTrack artists spotifyData={searchResults.artists.items}>
+								Artists
+							</ItemTrack>
+						)}
 					</div>
 				</Layout>
 			</>
