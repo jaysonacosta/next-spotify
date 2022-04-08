@@ -25,7 +25,7 @@ import useSWR from 'swr';
 const fetcher = async (...args) =>
 	await axios.get(...args).then((res) => res.data);
 
-export default function Home() {
+export default function Library() {
 	const { data: session, status } = useSession();
 	// const { data: recentlyPlayedData, error: recentlyPlayedError } = useSWR(
 	// 	'/api/getRecentlyPlayed',

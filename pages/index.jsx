@@ -60,6 +60,7 @@ export default function Home() {
 			revalidateIfStale: false,
 		}
 	);
+	// console.log(session);
 	if (!session) {
 		return (
 			<>

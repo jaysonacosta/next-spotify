@@ -1,13 +1,8 @@
 import { getSession } from 'next-auth/react';
 import axios from 'axios';
-const url = 'https://api.spotify.com/v1/search?include_external=audio';
+const url = 'https://api.spotify.com/v1/browse/categories';
 export default async function handler(req, res) {
 	const session = await getSession({ req });
-	const { query } = req.query;
-	if (query.length === 0) {
-		res.status(204).send(null);
-		return;
-	}
 	if (session) {
 		const { accessToken } = session;
 		await axios
@@ -15,10 +10,6 @@ export default async function handler(req, res) {
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 					'Content-Type': 'application/json',
-				},
-				params: {
-					q: query,
-					type: 'artist,track,album',
 				},
 			})
 			.then(({ data }) => {

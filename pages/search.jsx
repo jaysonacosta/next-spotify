@@ -11,7 +11,12 @@ import ItemTrackSkeleton from '../components/ItemTrackSkeleton';
 import { useEffect, useState } from 'react';
 
 // Styles
-import { container, tracksContainer } from '../styles/Search.module.css';
+import {
+	container,
+	card,
+	itemContainer,
+	title,
+} from '../styles/Search.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 
 // NextAuth
@@ -21,12 +26,11 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios';
 
 // SWR
-
 import useSWR from 'swr';
 const fetcher = async (...args) =>
 	await axios.get(...args).then((res) => res.data);
 
-export default function Home() {
+export default function Search() {
 	const { data: session, status } = useSession();
 	const [query, updateQuery] = useState('');
 	const { data: searchResults, error: searchResultsError } = useSWR(
@@ -37,7 +41,14 @@ export default function Home() {
 			revalidateIfStale: false,
 		}
 	);
-	console.log(searchResults);
+	const { data: categoriesData, error: categoriesError } = useSWR(
+		`api/getSeveralBrowseCategories`,
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
+	);
 	if (!session) {
 		return (
 			<>
@@ -62,7 +73,11 @@ export default function Home() {
 
 				<Layout updateQuery={updateQuery}>
 					<div className={container}>
-						<p className={`${textWhite} ${textBold} ${textMd}`}>Search</p>
+						{query && (
+							<p className={`${textWhite} ${textBold} ${textMd}`}>
+								Search Results
+							</p>
+						)}
 						{!searchResults && query && (
 							<ItemTrackSkeleton>Tracks</ItemTrackSkeleton>
 						)}
@@ -87,6 +102,38 @@ export default function Home() {
 								Artists
 							</ItemTrack>
 						)}
+						{!query && (
+							<p className={`${textWhite} ${textBold} ${textMd}`}>Browse all</p>
+						)}
+						<div className={itemContainer}>
+							{!query &&
+								categoriesData &&
+								categoriesData.categories.items.map((categoryElement, i) => {
+									return (
+										<div
+											key={`categoryElement${i}`}
+											className={card}
+											onClick={() => {
+												console.log(categoryElement);
+											}}
+										>
+											<span
+												className={`${textWhite} ${textBold} ${textMd} ${title}`}
+											>
+												{categoryElement.name}
+											</span>
+											<Image
+												src={categoryElement.icons[0].url}
+												alt='Category image'
+												width='100%'
+												height='100%'
+												layout='responsive'
+												objectFit='contain'
+											></Image>
+										</div>
+									);
+								})}
+						</div>
 					</div>
 				</Layout>
 			</>
