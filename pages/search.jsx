@@ -1,6 +1,7 @@
 // Next Components
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Components
 import Layout from '../components/Layout';
@@ -110,27 +111,28 @@ export default function Search() {
 								categoriesData &&
 								categoriesData.categories.items.map((categoryElement, i) => {
 									return (
-										<div
+										<Link
 											key={`categoryElement${i}`}
-											className={card}
-											onClick={() => {
-												console.log(categoryElement);
-											}}
+											href={`/search/${categoryElement.id}`}
 										>
-											<span
-												className={`${textWhite} ${textBold} ${textMd} ${title}`}
-											>
-												{categoryElement.name}
-											</span>
-											<Image
-												src={categoryElement.icons[0].url}
-												alt='Category image'
-												width='100%'
-												height='100%'
-												layout='responsive'
-												objectFit='contain'
-											></Image>
-										</div>
+											<a>
+												<div className={card}>
+													<span
+														className={`${textWhite} ${textBold} ${textMd} ${title}`}
+													>
+														{categoryElement.name}
+													</span>
+													<Image
+														src={categoryElement.icons[0].url}
+														alt='Category image'
+														width='100%'
+														height='100%'
+														layout='responsive'
+														objectFit='contain'
+													></Image>
+												</div>
+											</a>
+										</Link>
 									);
 								})}
 						</div>
