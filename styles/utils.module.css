@@ -1,4 +1,11 @@
 /* Font Size */
+.textXxl {
+	font-size: 4rem;
+	margin: 1.5rem 0;
+}
+.textXl {
+	font-size: 2.5rem;
+}
 .textLg {
 	font-size: 2rem;
 }

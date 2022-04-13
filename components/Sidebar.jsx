@@ -45,7 +45,11 @@ export default function Sidebar() {
 					</a>
 				</Link>
 				<Link href='/search'>
-					<a className={router.pathname == '/search' ? textWhite : textMuted}>
+					<a
+						className={
+							router.pathname.includes('/search') ? textWhite : textMuted
+						}
+					>
 						<div className={sidebarElement}>
 							<FontAwesomeIcon
 								className={icon}

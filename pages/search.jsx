@@ -113,7 +113,10 @@ export default function Search() {
 									return (
 										<Link
 											key={`categoryElement${i}`}
-											href={`/search/${categoryElement.id}`}
+											href={{
+												pathname: `/search/${categoryElement.id}`,
+												query: { genre: categoryElement.name },
+											}}
 										>
 											<a>
 												<div className={card}>
