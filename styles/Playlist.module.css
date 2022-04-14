@@ -1,0 +1,9 @@
+.container {
+	padding: 2rem;
+}
+.itemContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 200px);
+	gap: 20px;
+	row-gap: 20px;
+}
