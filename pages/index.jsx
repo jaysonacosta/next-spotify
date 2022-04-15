@@ -21,7 +21,6 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios';
 
 // SWR
-
 import useSWR from 'swr';
 const fetcher = async (...args) =>
 	await axios.get(...args).then((res) => res.data);

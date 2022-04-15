@@ -26,11 +26,11 @@ export default function SpotifyItem({ data }) {
 				width={176}
 				alt='Album Cover'
 			></Image>
-			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name)}</p>
+			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name, 15)}</p>
 			<p className={`${textMuted} ${textBold} ${textSm}`}>
 				{data.description
-					? truncateString(data.description)
-					: truncateString(data.artists[0].name)}
+					? truncateString(data.description, 75)
+					: truncateString(data.artists[0].name, 15)}
 			</p>
 			<div className={playButton}>
 				<FontAwesomeIcon icon={faPlay} fontSize='25'></FontAwesomeIcon>

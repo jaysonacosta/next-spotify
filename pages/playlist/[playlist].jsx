@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Layout from '../../components/Layout';
 import SpotifyItem from '../../components/SpotifyItem';
 import SpotifyItemSkeleton from '../../components/SpotifyItemSkeleton';
+import Table from '../../components/Table';
 
 // Styles
 import { container, itemContainer } from '../../styles/Playlist.module.css';
@@ -43,7 +44,7 @@ export default function Playlist() {
 			revalidateIfStale: false,
 		}
 	);
-	// console.log(playlistData);
+	console.log(playlistData);
 	if (!session) {
 		return (
 			<>
@@ -71,16 +72,8 @@ export default function Playlist() {
 						<p className={`${textWhite} ${textBold} ${mt0} ${textXxl}`}>
 							{name}
 						</p>
-						{/* <div className={itemContainer}>
-							{playlistData.playlists.items.map((playlistItem, i) => {
-								return (
-									<SpotifyItem
-										data={playlistItem}
-										key={`playlistItem${i}`}
-									></SpotifyItem>
-								);
-							})}
-						</div> */}
+						<hr />
+						<Table data={playlistData.items}></Table>
 					</div>
 				</Layout>
 			</>
@@ -98,18 +91,7 @@ export default function Playlist() {
 					<p className={`${textWhite} ${textBold} ${textSm}`}>PLAYLIST</p>
 					<p className={`${textWhite} ${textBold} ${textXxl} ${mt0}`}>{name}</p>
 					<div className={itemContainer}>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
-						<SpotifyItemSkeleton></SpotifyItemSkeleton>
+						<p className={`${textWhite} ${textBold}`}>Loading...</p>
 					</div>
 				</div>
 			</Layout>

@@ -30,6 +30,9 @@
 .mt0 {
 	margin-top: 0;
 }
+.mr1 {
+	margin-right: 1rem;
+}
 /* Buttons */
 .btn {
 	padding: 0.75rem;
