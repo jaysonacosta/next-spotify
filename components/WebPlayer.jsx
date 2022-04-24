@@ -1,0 +1,40 @@
+// Styles
+import { container } from '../styles/WebPlayer.module.css';
+const spotifyPlayerStyles = {
+	bgColor: '#292424',
+	color: '#fff',
+	height: 80,
+};
+
+// Spotify Player SDK
+import SpotifyPlayer from 'react-spotify-web-playback';
+
+// NextAuth
+import { useSession } from 'next-auth/react';
+
+// Hooks
+import { useEffect } from 'react';
+
+// Spotify State
+import { useSpotifyContext } from '../context/spotifyState';
+
+export default function WebPlayer() {
+	const { data: session } = useSession();
+	const [musicQueue, updateQueue] = useSpotifyContext();
+	if (session) {
+		return (
+			<div className={container}>
+				<SpotifyPlayer
+					token={session.accessToken}
+					uris={musicQueue}
+					styles={spotifyPlayerStyles}
+					callback={(state) => {
+						console.log(state);
+					}}
+					autoPlay={true}
+				></SpotifyPlayer>
+			</div>
+		);
+	}
+	return null;
+}

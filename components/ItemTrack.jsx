@@ -6,6 +6,9 @@ import SpotifyArtist from './SpotifyArtist';
 import { itemTrack } from '../styles/ItemTrack.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 
+// Spotify State
+import { useSpotifyContext } from '../context/spotifyState';
+
 export default function ItemTrack({ children, spotifyData, artists }) {
 	if (spotifyData.length === 0) {
 		return (

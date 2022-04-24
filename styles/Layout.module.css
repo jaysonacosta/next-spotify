@@ -1,7 +1,7 @@
 .wrapper {
 	display: grid;
 	grid-template-columns: 250px auto;
-	grid-template-rows: 70px auto;
+	grid-template-rows: 70px auto 80px;
 	background: var(--main-bg);
 	min-height: 100vh;
 }
@@ -23,4 +23,11 @@
 	grid-column-end: 3;
 	grid-row-start: 1;
 	grid-row-end: 2;
+}
+.webplayer {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
+	z-index: 1;
 }

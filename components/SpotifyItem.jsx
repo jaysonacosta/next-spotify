@@ -17,7 +17,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
+// Spotify State
+import { useSpotifyContext } from '../context/spotifyState';
+
 export default function SpotifyItem({ data }) {
+	const [musicQueue, updateQueue] = useSpotifyContext();
 	return (
 		<div className={card}>
 			<Image
@@ -26,13 +30,20 @@ export default function SpotifyItem({ data }) {
 				width={176}
 				alt='Album Cover'
 			></Image>
-			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name, 15)}</p>
+			<p className={`${textWhite} ${textBold}`}>
+				{truncateString(data.name, 15)}
+			</p>
 			<p className={`${textMuted} ${textBold} ${textSm}`}>
 				{data.description
 					? truncateString(data.description, 75)
-					: truncateString(data.artists[0].name, 15)}
+					: truncateString(data.artists[0].name, 20)}
 			</p>
-			<div className={playButton}>
+			<div
+				onClick={() => {
+					updateQueue([data.uri]);
+				}}
+				className={playButton}
+			>
 				<FontAwesomeIcon icon={faPlay} fontSize='25'></FontAwesomeIcon>
 			</div>
 		</div>

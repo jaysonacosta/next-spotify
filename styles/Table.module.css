@@ -1,5 +1,7 @@
 .table {
 	width: 100%;
+	min-width: 800px;
+	overflow-x: scroll;
 }
 .tableRow {
 	display: flex;
