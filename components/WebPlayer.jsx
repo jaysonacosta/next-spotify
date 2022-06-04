@@ -4,6 +4,8 @@ const spotifyPlayerStyles = {
 	bgColor: '#292424',
 	color: '#fff',
 	height: 80,
+	trackNameColor: "#fff",
+	activeColor: "#fff",
 };
 
 // Spotify Player SDK

@@ -22,9 +22,6 @@ export default function Layout({ children, updateQuery }) {
 				<Sidebar></Sidebar>
 			</nav>
 			<main className={mainContent}>{children}</main>
-			<div className={webplayer}>
-				<WebPlayer></WebPlayer>
-			</div>
 		</div>
 	);
 }
