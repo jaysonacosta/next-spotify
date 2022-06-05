@@ -40,6 +40,7 @@ export default function SpotifyItem({ data }) {
 			</p>
 			<div
 				onClick={() => {
+					console.log(data);
 					updateQueue([data.uri]);
 				}}
 				className={playButton}

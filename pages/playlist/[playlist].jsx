@@ -44,7 +44,6 @@ export default function Playlist() {
 			revalidateIfStale: false,
 		}
 	);
-	console.log(playlistData);
 	if (!session) {
 		return (
 			<>

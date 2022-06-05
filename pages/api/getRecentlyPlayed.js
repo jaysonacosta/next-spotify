@@ -5,7 +5,6 @@ export default async function handler(req, res) {
 	const session = await getSession({ req });
 	if (session) {
 		const { accessToken } = session;
-		console.log(accessToken);
 		await axios
 			.get(url, {
 				headers: {

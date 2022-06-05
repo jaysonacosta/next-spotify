@@ -38,7 +38,6 @@ export default function Library() {
 			revalidateIfStale: false,
 		}
 	);
-	console.log(playlistData);
 	if (session) {
 		if (!playlistData) {
 			return (
