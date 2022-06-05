@@ -23,7 +23,6 @@ body {
 	overflow-x: hidden;
 	background-color: var(--black);
 }
-
 a {
 	color: inherit;
 	text-decoration: none;

@@ -1,11 +1,10 @@
 import { getSession } from 'next-auth/react';
 import axios from 'axios';
-const url = 'https://api.spotify.com/v1/me/player/recently-played';
+const url = 'https://api.spotify.com/v1/me/playlists';
 export default async function handler(req, res) {
 	const session = await getSession({ req });
 	if (session) {
 		const { accessToken } = session;
-		console.log(accessToken);
 		await axios
 			.get(url, {
 				headers: {

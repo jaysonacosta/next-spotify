@@ -23,18 +23,15 @@ export default function WebPlayer() {
 	const { data: session } = useSession();
 	const [musicQueue, updateQueue] = useSpotifyContext();
 	if (session) {
-		if (musicQueue.length == 0) {
-			return null;
-		}
+		// if (musicQueue.length == 0) {
+		// 	return null;
+		// }
 		return (
 			<div className={container}>
 				<SpotifyPlayer
 					token={session.accessToken}
 					uris={musicQueue}
 					styles={spotifyPlayerStyles}
-					callback={(state) => {
-						console.log(state);
-					}}
 					autoPlay={true}
 					syncExternalDevice={true}
 					persistDeviceSelection={true}

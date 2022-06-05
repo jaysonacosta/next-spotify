@@ -7,6 +7,7 @@ const nextConfig = {
 			't.scdn.co',
 			'charts-images.scdn.co',
 			'daily-mix.scdn.co',
+			'mosaic.scdn.co',
 		],
 	},
 };

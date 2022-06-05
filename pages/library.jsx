@@ -1,16 +1,19 @@
 // Next Components
 import Head from 'next/head';
-import Image from 'next/image';
 
 // Components
 import Layout from '../components/Layout';
-import ItemTrack from '../components/ItemTrack';
+import PlaylistItem from '../components/PlaylistItem';
 
 // Hooks
 import { useEffect, useState } from 'react';
 
 // Styles
-import { container, tracksContainer } from '../styles/Library.module.css';
+import {
+	container,
+	tracksContainer,
+	playlistGrid,
+} from '../styles/Library.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 
 // NextAuth
@@ -27,28 +30,25 @@ const fetcher = async (...args) =>
 
 export default function Library() {
 	const { data: session, status } = useSession();
-	// const { data: recentlyPlayedData, error: recentlyPlayedError } = useSWR(
-	// 	'/api/getRecentlyPlayed',
-	// 	fetcher,
-	// 	{
-	// 		revalidateOnFocus: false,
-	// 		revalidateIfStale: false,
-	// 	}
-	// );
-	if (!session) {
-		return (
-			<>
+	const { data: playlistData, error: playlistError } = useSWR(
+		'/api/getPlaylists',
+		fetcher,
+		{
+			revalidateOnFocus: false,
+			revalidateIfStale: false,
+		}
+	);
+	console.log(playlistData);
+	if (session) {
+		if (!playlistData) {
+			return (
 				<Layout>
 					<div className={container}>
-						<h1 className={`${textMd} ${textWhite} ${textBold}`}>
-							Please Sign In
-						</h1>
+						<p className={`${textMd} ${textWhite} ${textBold}`}>Loading...</p>
 					</div>
 				</Layout>
-			</>
-		);
-	}
-	if (session) {
+			);
+		}
 		return (
 			<>
 				<Head>
@@ -60,16 +60,25 @@ export default function Library() {
 				<Layout>
 					<div className={container}>
 						<p className={`${textWhite} ${textBold} ${textMd}`}>My Library</p>
+						<div className={playlistGrid}>
+							{playlistData.items.map((playlist) => {
+								return <PlaylistItem key={playlist.id} data={playlist} />;
+							})}
+						</div>
 					</div>
 				</Layout>
 			</>
 		);
 	}
 	return (
-		<Layout>
-			<div className={container}>
-				<p className={`${textMd} ${textWhite} ${textBold}`}>Loading...</p>
-			</div>
-		</Layout>
+		<>
+			<Layout>
+				<div className={container}>
+					<h1 className={`${textMd} ${textWhite} ${textBold}`}>
+						Please Sign In
+					</h1>
+				</div>
+			</Layout>
+		</>
 	);
 }

@@ -72,7 +72,13 @@ export default function Home() {
 			</>
 		);
 	}
-	if (session && recentlyPlayedData && recommendationData && topArtistsData) {
+	if (
+		session &&
+		recentlyPlayedData &&
+		recommendationData &&
+		topArtistsData &&
+		topTracksData
+	) {
 		return (
 			<>
 				<Head>
