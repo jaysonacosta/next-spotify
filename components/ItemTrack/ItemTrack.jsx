@@ -1,13 +1,13 @@
 // Components
-import SpotifyItem from './SpotifyItem';
-import SpotifyArtist from './SpotifyArtist';
+import SpotifyItem from '../SpotifyItem';
+import SpotifyArtist from '../SpotifyArtist';
 
 // Styles
-import { itemTrack } from '../styles/ItemTrack.module.css';
-import { textMd, textWhite, textBold } from '../styles/utils.module.css';
+import { itemTrack } from './ItemTrack.module.css';
+import { textMd, textWhite, textBold } from '../../styles/utils.module.css';
 
 // Spotify State
-import { useSpotifyContext } from '../context/spotifyState';
+import { useSpotifyContext } from '../../context/spotifyState';
 
 export default function ItemTrack({ children, spotifyData, artists }) {
 	if (spotifyData.length === 0) {

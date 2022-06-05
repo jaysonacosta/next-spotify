@@ -11,9 +11,13 @@ import {
 	sidebarElement,
 	btn,
 	icon,
-} from '../styles/Sidebar.module.css';
+} from './Sidebar.module.css';
 
-import { textWhite, textBold, textMuted } from '../styles/utils.module.css';
+import {
+	textWhite,
+	textBold,
+	textMuted,
+} from '../../../styles/utils.module.css';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

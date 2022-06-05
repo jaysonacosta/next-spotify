@@ -2,23 +2,23 @@
 import Image from 'next/image';
 
 // Utils
-import { truncateString } from '../lib/utils';
+import { truncateString } from '../../lib/utils';
 
 // Styles
-import { card, playButton } from '../styles/SpotifyItem.module.css';
+import { card, playButton } from './SpotifyItem.module.css';
 import {
 	textWhite,
 	textMuted,
 	textBold,
 	textSm,
-} from '../styles/utils.module.css';
+} from '../../styles/utils.module.css';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 // Spotify State
-import { useSpotifyContext } from '../context/spotifyState';
+import { useSpotifyContext } from '../../context/spotifyState';
 
 export default function SpotifyItem({ data }) {
 	const [musicQueue, updateQueue] = useSpotifyContext();

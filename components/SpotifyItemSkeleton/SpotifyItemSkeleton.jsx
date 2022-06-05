@@ -4,7 +4,7 @@ import {
 	loadingImage,
 	loadingText,
 	pulse,
-} from '../styles/SpotifyItemSkeleton.module.css';
+} from './SpotifyItemSkeleton.module.css';
 
 export default function SpotifyItemSkeleton() {
 	return (

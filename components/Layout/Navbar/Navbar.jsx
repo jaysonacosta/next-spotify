@@ -7,8 +7,13 @@ import {
 	menuItem,
 	iconWrapper,
 	search,
-} from '../styles/Navbar.module.css';
-import { btn, textWhite, textSm, textBold } from '../styles/utils.module.css';
+} from './Navbar.module.css';
+import {
+	btn,
+	textWhite,
+	textSm,
+	textBold,
+} from '../../../styles/utils.module.css';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

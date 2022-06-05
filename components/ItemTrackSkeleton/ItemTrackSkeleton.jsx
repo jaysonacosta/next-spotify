@@ -1,9 +1,9 @@
 // Components
-import SpotifyItemSkeleton from './SpotifyItemSkeleton';
+import SpotifyItemSkeleton from '../SpotifyItemSkeleton/SpotifyItemSkeleton';
 
 // Styles
-import { itemTrack } from '../styles/ItemTrackSkeleton.module.css';
-import { textMd, textWhite, textBold } from '../styles/utils.module.css';
+import { itemTrack } from './ItemTrackSkeleton.module.css';
+import { textMd, textWhite, textBold } from '../../styles/utils.module.css';
 
 export default function ItemTrackSkeleton({ children }) {
 	return (

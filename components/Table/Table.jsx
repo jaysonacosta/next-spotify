@@ -21,7 +21,7 @@ import {
 	convertDate,
 	millisToMinutesAndSeconds,
 	truncateString,
-} from '../lib/utils';
+} from '../../lib/utils';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

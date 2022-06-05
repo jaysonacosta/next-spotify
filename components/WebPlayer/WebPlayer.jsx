@@ -1,11 +1,11 @@
 // Styles
-import { container } from '../styles/WebPlayer.module.css';
+import { container } from './styles.module.css';
 const spotifyPlayerStyles = {
 	bgColor: '#292424',
 	color: '#fff',
 	height: 80,
-	trackNameColor: "#fff",
-	activeColor: "#fff",
+	trackNameColor: '#fff',
+	activeColor: '#fff',
 };
 
 // Spotify Player SDK
@@ -18,7 +18,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 
 // Spotify State
-import { useSpotifyContext } from '../context/spotifyState';
+import { useSpotifyContext } from '../../context/spotifyState';
 
 export default function WebPlayer() {
 	const { data: session } = useSession();
@@ -34,6 +34,9 @@ export default function WebPlayer() {
 						console.log(state);
 					}}
 					autoPlay={true}
+					syncExternalDevice={true}
+					persistDeviceSelection={true}
+					name={"Next Spotify"}
 				></SpotifyPlayer>
 			</div>
 		);
