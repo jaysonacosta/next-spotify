@@ -59,7 +59,6 @@ export default function Home() {
 			revalidateIfStale: false,
 		}
 	);
-	// console.log(recentlyPlayedData);
 	if (!session) {
 		return (
 			<>

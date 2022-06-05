@@ -8,7 +8,7 @@ import SpotifyItemSkeleton from '../../components/SpotifyItemSkeleton';
 import Table from '../../components/Table';
 
 // Styles
-import { container, itemContainer } from '../../styles/Playlist.module.css';
+import { container, itemContainer } from './Playlist.module.css';
 import {
 	textSm,
 	textMd,

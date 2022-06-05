@@ -13,8 +13,8 @@ import {
 	body,
 	icon,
 	songArtist,
-} from '../styles/Table.module.css';
-import { textSm, textMuted, textWhite } from '../styles/utils.module.css';
+} from './Table.module.css';
+import { textSm, textMuted, textWhite } from '../../styles/utils.module.css';
 
 // Utils
 import {
@@ -23,11 +23,15 @@ import {
 	truncateString,
 } from '../../lib/utils';
 
+// Spotify State
+import { useSpotifyContext } from '../../context/spotifyState';
+
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faE } from '@fortawesome/free-solid-svg-icons';
 
 export default function Table({ data }) {
+	const [musicQueue, updateQueue] = useSpotifyContext();
 	return (
 		<div className={table}>
 			<div className={`${tableRow} ${textMuted} ${textSm}`}>
@@ -40,7 +44,13 @@ export default function Table({ data }) {
 			<div className={body}>
 				{data.map((trackElement, i) => {
 					return (
-						<div key={`trackElement${i}`} className={`${tableRow} ${bodyRow}`}>
+						<div
+							key={`trackElement${i}`}
+							className={`${tableRow} ${bodyRow}`}
+							onClick={() => {
+								updateQueue([trackElement.track.uri]);
+							}}
+						>
 							<div
 								className={`${tableElement} ${textSm} ${textMuted} ${firstElement}`}
 							>

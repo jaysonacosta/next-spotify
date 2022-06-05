@@ -5,7 +5,6 @@ const spotifyPlayerStyles = {
 	color: '#fff',
 	height: 80,
 	trackNameColor: '#fff',
-	activeColor: '#fff',
 };
 
 // Spotify Player SDK
@@ -24,6 +23,9 @@ export default function WebPlayer() {
 	const { data: session } = useSession();
 	const [musicQueue, updateQueue] = useSpotifyContext();
 	if (session) {
+		if (musicQueue.length == 0) {
+			return null;
+		}
 		return (
 			<div className={container}>
 				<SpotifyPlayer
@@ -36,7 +38,8 @@ export default function WebPlayer() {
 					autoPlay={true}
 					syncExternalDevice={true}
 					persistDeviceSelection={true}
-					name={"Next Spotify"}
+					name={'Next Spotify'}
+					showSaveIcon={true}
 				></SpotifyPlayer>
 			</div>
 		);
