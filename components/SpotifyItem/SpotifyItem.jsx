@@ -20,10 +20,27 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 // Spotify State
 import { useSpotifyContext } from '../../context/spotifyState';
 
-export default function SpotifyItem({ data }) {
+// Hooks
+import { useState } from 'react';
+
+export default function SpotifyItem({
+	data,
+	isContextMenuActive,
+	updateContextMenu,
+	setContextMenuData,
+	setContextMenuCoordinates,
+}) {
 	const [musicQueue, updateQueue] = useSpotifyContext();
 	return (
-		<div className={card}>
+		<div
+			className={card}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				// setContextMenuData(data);
+				setContextMenuCoordinates({ x: e.pageX, y: e.pageY });
+				updateContextMenu(true);
+			}}
+		>
 			<Image
 				src={data.album ? data.album.images[0].url : data.images[0].url}
 				height={176}

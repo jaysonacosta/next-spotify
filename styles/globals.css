@@ -2,12 +2,12 @@
 	--main-bg: linear-gradient(
 		180deg,
 		rgba(33, 33, 33, 1) 0%,
-		rgba(18, 18, 18, 1) 100%
+		rgba(28, 28, 28, 1) 100%
 	);
 	--black: #191414;
 	--black-light: #292424;
-	--black-trans: #191414d3;
-	--black-trans-light: #292424d3;
+	--black-trans: #191616;
+	--black-trans-light: #272323;
 	--green: #1db954;
 	--green-light: #2ec362;
 	--white: #fff;

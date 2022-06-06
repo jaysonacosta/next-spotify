@@ -23,9 +23,9 @@ export default function WebPlayer() {
 	const { data: session } = useSession();
 	const [musicQueue, updateQueue] = useSpotifyContext();
 	if (session) {
-		// if (musicQueue.length == 0) {
-		// 	return null;
-		// }
+		if (musicQueue.length == 0) {
+			return null;
+		}
 		return (
 			<div className={container}>
 				<SpotifyPlayer

@@ -9,7 +9,15 @@ import { textMd, textWhite, textBold } from '../../styles/utils.module.css';
 // Spotify State
 import { useSpotifyContext } from '../../context/spotifyState';
 
-export default function ItemTrack({ children, spotifyData, artists }) {
+export default function ItemTrack({
+	children,
+	spotifyData,
+	artists,
+	isContextMenuActive,
+	updateContextMenu,
+	setContextMenuData,
+	setContextMenuCoordinates,
+}) {
 	if (spotifyData.length === 0) {
 		return (
 			<>
@@ -42,7 +50,10 @@ export default function ItemTrack({ children, spotifyData, artists }) {
 	return (
 		<>
 			<p className={`${textMd} ${textWhite} ${textBold}`}>{children}</p>
-			<div className={itemTrack}>
+			<div
+				className={itemTrack}
+				style={{ overflow: isContextMenuActive ? 'hidden' : null }}
+			>
 				{spotifyData.map((spotifyElement, i) => {
 					return (
 						<SpotifyItem
@@ -50,6 +61,10 @@ export default function ItemTrack({ children, spotifyData, artists }) {
 							data={
 								spotifyElement.track ? spotifyElement.track : spotifyElement
 							}
+							isContextMenuActive={isContextMenuActive}
+							updateContextMenu={updateContextMenu}
+							setContextMenuData={setContextMenuData}
+							setContextMenuCoordinates={setContextMenuCoordinates}
 						></SpotifyItem>
 					);
 				})}
