@@ -1,10 +1,7 @@
-// Next Components
 import Image from 'next/image';
 
-// Utils
 import { truncateString } from '../../lib/utils';
 
-// Styles
 import { card, playButton } from './SpotifyItem.module.css';
 import {
 	textWhite,
@@ -13,51 +10,37 @@ import {
 	textSm,
 } from '../../styles/utils.module.css';
 
-// FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-// Spotify State
 import { useSpotifyContext } from '../../context/spotifyState';
 
-// Hooks
-import { useState } from 'react';
-
-export default function SpotifyItem({
-	data,
-	isContextMenuActive,
-	updateContextMenu,
-	setContextMenuData,
-	setContextMenuCoordinates,
-}) {
+export default function SpotifyItem({ data, setContext }) {
 	const [musicQueue, updateQueue] = useSpotifyContext();
+
 	return (
 		<div
 			className={card}
 			onContextMenu={(e) => {
 				e.preventDefault();
-				// setContextMenuData(data);
-				setContextMenuCoordinates({ x: e.pageX, y: e.pageY });
-				updateContextMenu(true);
+				const coords = { x: e.pageX, y: e.pageY };
+				setContext(data, coords);
 			}}
 		>
 			<Image
-				src={data.album ? data.album.images[0].url : data.images[0].url}
+				src={data.album.images[0].url}
 				height={176}
 				width={176}
-				alt='Album Cover'
+				alt='Track album cover'
 			></Image>
 			<p className={`${textWhite} ${textBold}`}>
 				{truncateString(data.name, 15)}
 			</p>
 			<p className={`${textMuted} ${textBold} ${textSm}`}>
-				{data.description
-					? truncateString(data.description, 75)
-					: truncateString(data.artists[0].name, 20)}
+				{truncateString(data.album.artists[0].name, 20)}
 			</p>
 			<div
 				onClick={() => {
-					console.log(data);
 					updateQueue([data.uri]);
 				}}
 				className={playButton}

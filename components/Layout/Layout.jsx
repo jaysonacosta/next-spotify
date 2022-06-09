@@ -1,8 +1,6 @@
-// Components
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 
-// Styles
 import {
 	wrapper,
 	mainContent,

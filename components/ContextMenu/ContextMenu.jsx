@@ -1,16 +1,19 @@
-// Styles
-import {
-	textWhite,
-	textMuted,
-	textBold,
-	textSm,
-} from '../../styles/utils.module.css';
+import { textMuted, textSm } from '../../styles/utils.module.css';
 import { menu, menuItem } from './styles.module.css';
 
-export default function ContextMenu({ data, coordinates }) {
+import { useSpotifyContext } from '../../context/spotifyState';
+
+export default function ContextMenu({ data, coords }) {
+	const [musicQueue, updateQueue] = useSpotifyContext();
+
 	return (
-		<div className={menu} style={{ left: coordinates.x, top: coordinates.y }}>
-			<div className={`${menuItem} ${textMuted} ${textSm}`}>Add to queue</div>
+		<div className={menu} style={{ left: coords.x, top: coords.y }}>
+			<div
+				className={`${menuItem} ${textMuted} ${textSm}`}
+				onClick={() => updateQueue([...musicQueue, data.track.uri])}
+			>
+				Add to queue
+			</div>
 			<div className={`${menuItem} ${textMuted} ${textSm}`}>
 				Save to your Liked Songs
 			</div>

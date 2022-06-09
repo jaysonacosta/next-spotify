@@ -1,10 +1,7 @@
-// Next Components
 import Image from 'next/image';
 
-// Utils
 import { truncateString } from '../../lib/utils';
 
-// Styles
 import { card, playButton, image } from './SpotifyArtist.module.css';
 import {
 	textWhite,
@@ -13,13 +10,23 @@ import {
 	textSm,
 } from '../../styles/utils.module.css';
 
-// FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-export default function SpotifyItem({ data }) {
+import { useSpotifyContext } from '../../context/spotifyState';
+
+export default function SpotifyItem({ data, setContext }) {
+	const [musicQueue, updateQueue] = useSpotifyContext();
+
 	return (
-		<div className={card}>
+		<div
+			className={card}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				const coords = { x: e.pageX, y: e.pageY };
+				setContext(data, coords);
+			}}
+		>
 			<Image
 				src={data.images[0] ? data.images[0].url : '/missing-artist.jpg'}
 				height={176}

@@ -1,23 +1,15 @@
-// Styles
+import SpotifyPlayer from 'react-spotify-web-playback';
+import { useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import { container } from './styles.module.css';
+import { useSpotifyContext } from '../../context/spotifyState';
+
 const spotifyPlayerStyles = {
 	bgColor: '#292424',
 	color: '#fff',
 	height: 80,
 	trackNameColor: '#fff',
 };
-
-// Spotify Player SDK
-import SpotifyPlayer from 'react-spotify-web-playback';
-
-// NextAuth
-import { useSession } from 'next-auth/react';
-
-// Hooks
-import { useEffect } from 'react';
-
-// Spotify State
-import { useSpotifyContext } from '../../context/spotifyState';
 
 export default function WebPlayer() {
 	const { data: session } = useSession();
@@ -32,7 +24,7 @@ export default function WebPlayer() {
 					token={session.accessToken}
 					uris={musicQueue}
 					styles={spotifyPlayerStyles}
-					autoPlay={true}
+					autoPlay={false}
 					syncExternalDevice={true}
 					persistDeviceSelection={true}
 					name={'Next Spotify'}

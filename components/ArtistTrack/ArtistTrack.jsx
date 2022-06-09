@@ -1,9 +1,9 @@
-import SpotifyItem from '../SpotifyItem';
+import SpotifyArtist from '../SpotifyArtist';
 
-import { itemTrack } from './ItemTrack.module.css';
+import { itemTrack } from './styles.module.css';
 import { textMd, textWhite, textBold } from '../../styles/utils.module.css';
 
-export default function ItemTrack({ children, data, setContext }) {
+export default function ArtistTrack({ children, data, setContext }) {
 	if (data.length === 0) {
 		return null;
 	}
@@ -13,11 +13,11 @@ export default function ItemTrack({ children, data, setContext }) {
 			<div className={itemTrack}>
 				{data.map((track, i) => {
 					return (
-						<SpotifyItem
-							key={`track-${i}`}
-							data={track.track ? track.track : track}
+						<SpotifyArtist
+							key={`artist-${i}`}
+							data={track}
 							setContext={setContext}
-						></SpotifyItem>
+						></SpotifyArtist>
 					);
 				})}
 			</div>

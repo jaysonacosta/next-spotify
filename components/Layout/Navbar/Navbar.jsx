@@ -1,4 +1,3 @@
-// Styles
 import {
 	wrapper,
 	navbarElement,
@@ -15,14 +14,11 @@ import {
 	textBold,
 } from '../../../styles/utils.module.css';
 
-// FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
-// NextAuth
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-// Hooks
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
