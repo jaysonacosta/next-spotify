@@ -53,7 +53,7 @@ export default function Home() {
 						<title>Next Spotify | Home</title>
 					</Head>
 					<Layout>
-						<div className={container} style={{ overflowX: 'none' }}>
+						<div className={container}>
 							<div className={tracksContainer}>
 								<ItemTrack data={recentTracks.items} setContext={setContext}>
 									Recently Played

@@ -29,7 +29,7 @@ export default function Search() {
 
 	const { data: search } = useSWR(`${searchURI}${query}`, fetcher, revalidate);
 	const { data: categories } = useSWR(categoriesURI, fetcher, revalidate);
-	console.log(search);
+
 	if (session) {
 		if (categories) {
 			return (

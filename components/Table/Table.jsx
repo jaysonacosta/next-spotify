@@ -1,7 +1,5 @@
-// Next Components
 import Image from 'next/image';
 
-// Styles
 import {
 	table,
 	tableRow,
@@ -16,22 +14,20 @@ import {
 } from './Table.module.css';
 import { textSm, textMuted, textWhite } from '../../styles/utils.module.css';
 
-// Utils
 import {
 	convertDate,
 	millisToMinutesAndSeconds,
 	truncateString,
 } from '../../lib/utils';
 
-// Spotify State
 import { useSpotifyContext } from '../../context/spotifyState';
 
-// FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faE } from '@fortawesome/free-solid-svg-icons';
 
 export default function Table({ data }) {
 	const [musicQueue, updateQueue] = useSpotifyContext();
+
 	return (
 		<div className={table}>
 			<div className={`${tableRow} ${textMuted} ${textSm}`}>
