@@ -2,17 +2,13 @@ import Head from 'next/head';
 import Layout from '../components/Layout';
 import ItemTrack from '../components/ItemTrack';
 import ArtistTrack from '../components/ArtistTrack/ArtistTrack';
-import ItemTrackSkeleton from '../components/ItemTrackSkeleton';
+import AlbumTrack from '../components/AlbumTrack';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
+import Skeleton from '../components/Layout/Skeleton';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import {
-	container,
-	card,
-	itemContainer,
-	title,
-} from '../styles/Search.module.css';
+import { container, itemContainer } from '../styles/Search.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
 
 import { useSession } from 'next-auth/react';
@@ -49,21 +45,14 @@ export default function Search() {
 									Search Results
 								</p>
 							)}
-							{!search && query && (
-								<ItemTrackSkeleton>Tracks</ItemTrackSkeleton>
-							)}
-							{!search && query && (
-								<ItemTrackSkeleton>Albums</ItemTrackSkeleton>
-							)}
-							{!search && query && (
-								<ItemTrackSkeleton>Artists</ItemTrackSkeleton>
-							)}
+							{!search && query && <Skeleton />}
+
 							{search && (
 								<ItemTrack data={search.tracks.items}>Tracks</ItemTrack>
 							)}
-							{/* {search && (
-								<ItemTrack data={search.albums.items}>Albums</ItemTrack>
-							)} */}
+							{search && (
+								<AlbumTrack data={search.albums.items}>Albums</AlbumTrack>
+							)}
 							{search && (
 								<ArtistTrack data={search.artists.items}>Artists</ArtistTrack>
 							)}

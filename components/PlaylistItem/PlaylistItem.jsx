@@ -1,24 +1,20 @@
-// Next Components
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Utils
 import { truncateString } from '../../lib/utils';
 
-// Styles
-import { card, playButton } from './styles.module.css';
 import {
 	textWhite,
 	textMuted,
 	textBold,
 	textSm,
+	card,
+	playButton,
 } from '../../styles/utils.module.css';
 
-// FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-// Spotify State
 import { useSpotifyContext } from '../../context/spotifyState';
 
 export default function PlaylistItem({ data }) {

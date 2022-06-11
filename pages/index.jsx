@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 
 import Layout from '../components/Layout';
 import ItemTrack from '../components/ItemTrack';
-import ItemTrackSkeleton from '../components/ItemTrackSkeleton';
 import ContextMenu from '../components/ContextMenu';
+import Skeleton from '../components/Layout/Skeleton';
 
 import { container, tracksContainer } from '../styles/Home.module.css';
 import { textMd, textWhite, textBold } from '../styles/utils.module.css';
@@ -41,6 +40,8 @@ export default function Home() {
 		setContextActive(true);
 	};
 
+	const preventScroll = () => (isContextActive ? { overflow: 'hidden' } : null);
+
 	if (session) {
 		if (recentTracks && recommendations && topArtists && topTracks) {
 			return (
@@ -52,7 +53,7 @@ export default function Home() {
 						<title>Next Spotify | Home</title>
 					</Head>
 					<Layout>
-						<div className={container}>
+						<div className={container} style={{ overflowX: 'none' }}>
 							<div className={tracksContainer}>
 								<ItemTrack data={recentTracks.items} setContext={setContext}>
 									Recently Played
@@ -86,8 +87,7 @@ export default function Home() {
 				<Layout>
 					<div className={container}>
 						<div className={tracksContainer}>
-							<ItemTrackSkeleton>Recently Played</ItemTrackSkeleton>
-							<ItemTrackSkeleton>Songs you might like</ItemTrackSkeleton>
+							<Skeleton />
 						</div>
 					</div>
 				</Layout>

@@ -1,0 +1,13 @@
+.itemTrack {
+	display: flex;
+	gap: 25px;
+	overflow-x: scroll;
+	height: 320px;
+}
+.itemTrack::-webkit-scrollbar {
+	width: 0;
+}
+.itemTrack::-webkit-scrollbar-thumb {
+	background-color: var(--black-light);
+	border-radius: 0.25em;
+}
