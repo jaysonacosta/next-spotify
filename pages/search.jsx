@@ -5,6 +5,7 @@ import ArtistTrack from '../components/ArtistTrack/ArtistTrack';
 import AlbumTrack from '../components/AlbumTrack';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import Skeleton from '../components/Layout/Skeleton';
+import ContextMenu from '../components/ContextMenu';
 
 import { useState } from 'react';
 
@@ -26,14 +27,26 @@ const revalidate = { revalidateOnFocus: false, revalidateIfStale: false };
 export default function Search() {
 	const { data: session } = useSession();
 	const [query, updateQuery] = useState('');
+	const [isContextActive, setContextActive] = useState(false);
+	const [contextData, setContextData] = useState({});
+	const [contextCoords, setContextCoords] = useState({});
 
 	const { data: search } = useSWR(`${searchURI}${query}`, fetcher, revalidate);
 	const { data: categories } = useSWR(categoriesURI, fetcher, revalidate);
 
+	const setContext = (track, coords) => {
+		setContextData(track);
+		setContextCoords(coords);
+		setContextActive(true);
+	};
+
 	if (session) {
 		if (categories) {
 			return (
-				<div onContextMenu={(e) => e.preventDefault()}>
+				<div
+					onContextMenu={(e) => e.preventDefault()}
+					onClick={() => setContextActive(false)}
+				>
 					<Head>
 						<title>Next Spotify | Search</title>
 					</Head>
@@ -48,13 +61,22 @@ export default function Search() {
 							{!search && query && <Skeleton />}
 
 							{search && (
-								<ItemTrack data={search.tracks.items}>Tracks</ItemTrack>
+								<ItemTrack data={search.tracks.items} setContext={setContext}>
+									Tracks
+								</ItemTrack>
 							)}
 							{search && (
-								<AlbumTrack data={search.albums.items}>Albums</AlbumTrack>
+								<AlbumTrack data={search.albums.items} setContext={setContext}>
+									Albums
+								</AlbumTrack>
 							)}
 							{search && (
-								<ArtistTrack data={search.artists.items}>Artists</ArtistTrack>
+								<ArtistTrack
+									data={search.artists.items}
+									setContext={setContext}
+								>
+									Artists
+								</ArtistTrack>
 							)}
 							{!query && (
 								<p className={`${textWhite} ${textBold} ${textMd}`}>
@@ -68,6 +90,9 @@ export default function Search() {
 							</div>
 						</div>
 					</Layout>
+					{isContextActive ? (
+						<ContextMenu data={contextData} coords={contextCoords} />
+					) : null}
 				</div>
 			);
 		}

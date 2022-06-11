@@ -15,11 +15,18 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-export default function SpotifyAlbum({ data }) {
+export default function SpotifyAlbum({ data, setContext }) {
 	return (
 		// <Link>
 		// 	<a>
-		<div className={card}>
+		<div
+			className={card}
+			onContextMenu={(e) => {
+				e.preventDefault();
+				const coords = { x: e.pageX, y: e.pageY };
+				setContext(data, coords);
+			}}
+		>
 			<Image
 				src={data.images.length ? data.images[0].url : '/missing-artist.jpg'}
 				height={176}

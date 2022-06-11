@@ -17,7 +17,10 @@ export default function ContextMenu({ data, coords }) {
 			<div className={`${menuItem} ${textMuted} ${textSm}`}>
 				Save to your Liked Songs
 			</div>
-			<div className={`${menuItem} ${textMuted} ${textSm}`}>
+			<div
+				className={`${menuItem} ${textMuted} ${textSm}`}
+				onClick={() => window.open(data.external_urls.spotify)}
+			>
 				Open in Spotify
 			</div>
 		</div>
