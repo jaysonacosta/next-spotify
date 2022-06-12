@@ -1,0 +1,25 @@
+.container {
+	padding: 2rem;
+}
+.albumHeader {
+	display: flex;
+	padding-bottom: 2rem;
+}
+.albumInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	padding: 1.5rem;
+}
+.albumArtist {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: fit-content;
+}
+.itemContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 200px);
+	gap: 20px;
+	row-gap: 20px;
+}

@@ -1,0 +1,46 @@
+.table {
+	width: 100%;
+	min-width: 800px;
+	overflow-x: hidden;
+}
+.tableRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+}
+.bodyRow {
+}
+.bodyRow:hover {
+	background-color: var(--white-trans);
+	border-radius: 0.25em;
+	cursor: pointer;
+}
+.titleElement {
+	flex: 1;
+	display: flex;
+}
+.songInfo {
+	display: flex;
+	flex-direction: column;
+}
+.tableElement {
+	flex: 1;
+}
+.firstElement {
+	max-width: 25px !important;
+}
+.lastElement {
+	max-width: auto !important;
+}
+.songArtist {
+	display: flex;
+	align-items: center;
+}
+.icon {
+	background-color: var(--white-trans);
+	padding: 3px;
+	border-radius: 1px;
+	margin-right: 5px;
+	font-size: 8px;
+}
