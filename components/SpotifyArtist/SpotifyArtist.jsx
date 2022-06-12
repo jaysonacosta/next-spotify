@@ -34,7 +34,7 @@ export default function SpotifyItem({ data, setContext }) {
 				className={image}
 				alt='Artist Photo'
 			></Image>
-			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name)}</p>
+			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name, 15)}</p>
 			<p className={`${textMuted} ${textBold} ${textSm}`}>Artist</p>
 			<div className={playButton}>
 				<FontAwesomeIcon icon={faPlay} fontSize='25'></FontAwesomeIcon>

@@ -2,13 +2,17 @@
 	position: fixed;
 	min-height: 100vh;
 	min-width: 250px;
-	background-color: var(--black);
-	padding-top: 70px;
+	background-color: var(--true-black);
+	padding-top: 24px;
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
 .sidebarElement {
 	padding: 1rem;
+	transition: color 300ms;
+}
+.sidebarElement:hover {
+	color: #fff;
 }
 .icon {
 	margin-right: 1rem;
@@ -16,4 +20,13 @@
 .sidebarElement a {
 	padding: 0;
 	margin: 0;
+}
+.playlistElement {
+	padding: 0.5rem 1rem;
+	cursor: default;
+	user-select: none;
+	transition: color 300ms;
+}
+.playlistElement:hover {
+	color: #fff;
 }
