@@ -47,7 +47,7 @@ export default function Album() {
 		fetcher,
 		revalidate
 	);
-	console.log(album);
+
 	if (session) {
 		if (album) {
 			return (
