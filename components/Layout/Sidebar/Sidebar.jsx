@@ -7,6 +7,8 @@ import {
 	sidebarElement,
 	playlistElement,
 	icon,
+	playlistsWrapper,
+	playlistItems,
 } from './Sidebar.module.css';
 
 import {
@@ -100,28 +102,30 @@ export default function Sidebar() {
 					</a>
 				</Link>
 				<hr />
-				{playlists &&
-					playlists.items.map((playlist, i) => {
-						return (
-							<Link
-								href={{
-									pathname: `/playlist/${playlist.id}`,
-									query: { name: playlist.name },
-								}}
-								key={`playlist-${i}`}
-							>
-								<a
-									className={
-										query.playlist == playlist.id ? textWhite : textMuted
-									}
+				<div className={playlistsWrapper}>
+					{playlists &&
+						playlists.items.map((playlist, i) => {
+							return (
+								<Link
+									href={{
+										pathname: `/playlist/${playlist.id}`,
+										query: { name: playlist.name },
+									}}
+									key={`playlist-${i}`}
 								>
-									<div className={playlistElement}>
-										<span className={`${textSm}`}>{playlist.name}</span>
-									</div>
-								</a>
-							</Link>
-						);
-					})}
+									<a
+										className={
+											query.playlist == playlist.id ? textWhite : textMuted
+										}
+									>
+										<div className={playlistElement}>
+											<span className={`${textSm}`}>{playlist.name}</span>
+										</div>
+									</a>
+								</Link>
+							);
+						})}
+				</div>
 			</div>
 		);
 	}

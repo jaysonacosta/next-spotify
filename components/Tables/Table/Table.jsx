@@ -11,16 +11,17 @@ import {
 	body,
 	icon,
 	songArtist,
+	lastElement
 } from './Table.module.css';
-import { textSm, textMuted, textWhite } from '../../styles/utils.module.css';
+import { textSm, textMuted, textWhite } from '../../../styles/utils.module.css';
 
 import {
 	convertDate,
 	millisToMinutesAndSeconds,
 	truncateString,
-} from '../../lib/utils';
+} from '../../../lib/utils';
 
-import { useSpotifyContext } from '../../context/spotifyState';
+import { useSpotifyContext } from '../../../context/spotifyState';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faE } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +36,7 @@ export default function Table({ data }) {
 				<div className={titleElement}>TITLE</div>
 				<div className={tableElement}>ALBUM</div>
 				<div className={tableElement}>DATE ADDED</div>
-				<div className={tableElement}>LENGTH</div>
+				<div className={lastElement}>LENGTH</div>
 			</div>
 			<div className={body}>
 				{data.map((trackElement, i) => {
@@ -83,7 +84,7 @@ export default function Table({ data }) {
 							<div className={`${tableElement} ${textSm} ${textMuted}`}>
 								{convertDate(trackElement.added_at)}
 							</div>
-							<div className={`${tableElement} ${textSm} ${textMuted}`}>
+							<div className={`${lastElement} ${textSm} ${textMuted}`}>
 								{millisToMinutesAndSeconds(trackElement.track.duration_ms)}
 							</div>
 						</div>

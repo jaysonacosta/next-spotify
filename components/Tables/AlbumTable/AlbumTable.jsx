@@ -45,7 +45,7 @@ export default function Table({ data }) {
 							key={`trackElement${i}`}
 							className={`${tableRow} ${bodyRow}`}
 							onClick={() => {
-								updateQueue([track.track.uri]);
+								updateQueue([track.uri]);
 							}}
 						>
 							<div
@@ -55,7 +55,7 @@ export default function Table({ data }) {
 							</div>
 							<div className={`${titleElement} ${textWhite}`}>
 								<div className={songInfo}>
-									{truncateString(track.name, 30)}
+									{truncateString(track.name, 75)}
 									<div className={songArtist}>
 										{track.explicit && (
 											<FontAwesomeIcon
@@ -64,7 +64,7 @@ export default function Table({ data }) {
 											></FontAwesomeIcon>
 										)}
 										<span className={`${textMuted} ${textSm}`}>
-											{truncateString(track.artists[0].name, 20)}
+											{truncateString(track.artists[0].name, 40)}
 										</span>
 									</div>
 								</div>

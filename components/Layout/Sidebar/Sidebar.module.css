@@ -6,6 +6,7 @@
 	padding-top: 24px;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	overflow-y: hidden;
 }
 .sidebarElement {
 	padding: 1rem;
@@ -21,6 +22,10 @@
 	padding: 0;
 	margin: 0;
 }
+.playlistsWrapper {
+	height: 1000px;
+	overflow-y: scroll;
+}
 .playlistElement {
 	padding: 0.5rem 1rem;
 	cursor: default;
@@ -29,4 +34,11 @@
 }
 .playlistElement:hover {
 	color: #fff;
+}
+.playlistsWrapper::-webkit-scrollbar {
+	width: 0;
+}
+.playlistsWrapper::-webkit-scrollbar-thumb {
+	background-color: var(--black-light);
+	border-radius: 0.25em;
 }

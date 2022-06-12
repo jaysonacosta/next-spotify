@@ -31,6 +31,10 @@
 .firstElement {
 	max-width: 25px !important;
 }
+.lastElement {
+	min-width: 50px !important;
+	text-align: end;
+}
 .songArtist {
 	display: flex;
 	align-items: center;

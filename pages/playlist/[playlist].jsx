@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import Layout from '../../components/Layout';
-import Table from '../../components/Table';
+import Table from '../../components/Tables/Table';
 
 import { container, itemContainer } from './Playlist.module.css';
 import {
