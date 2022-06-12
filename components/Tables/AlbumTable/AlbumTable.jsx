@@ -11,7 +11,7 @@ import {
 	body,
 	icon,
 	songArtist,
-    lastElement
+	lastElement,
 } from './styles.module.css';
 import { textSm, textMuted, textWhite } from '../../../styles/utils.module.css';
 
@@ -26,9 +26,9 @@ import { useSpotifyContext } from '../../../context/spotifyState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faE } from '@fortawesome/free-solid-svg-icons';
 
-export default function Table({ data }) {
+export default function AlbumTable({ data }) {
 	const [musicQueue, updateQueue] = useSpotifyContext();
-
+	
 	return (
 		<div className={table}>
 			<div className={`${tableRow} ${textMuted} ${textSm}`}>

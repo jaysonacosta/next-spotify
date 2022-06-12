@@ -80,4 +80,5 @@
 }
 .playButton:hover {
 	background-color: var(--green-light);
+	transform: scale(1.1) !important;
 }

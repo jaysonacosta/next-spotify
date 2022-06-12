@@ -4,12 +4,15 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import AlbumTable from '../../components/Tables/AlbumTable';
 
+import { dateToString } from '../../lib/utils';
+
 import {
 	container,
 	itemContainer,
 	albumHeader,
 	albumInfo,
 	albumArtist,
+	albumFooter,
 } from './styles.module.css';
 import {
 	textSm,
@@ -18,6 +21,7 @@ import {
 	textBold,
 	textXxl,
 	mt0,
+	textMuted,
 } from '../../styles/utils.module.css';
 
 import { useSession } from 'next-auth/react';
@@ -40,20 +44,20 @@ export default function Album() {
 	const { data: session } = useSession();
 
 	const router = useRouter();
-	const { album: id, name } = router.query;
+	const { album: id } = router.query;
 
 	const { data: album } = useSWR(
 		id ? `${albumURI}${id}` : null,
 		fetcher,
 		revalidate
 	);
-
+	
 	if (session) {
 		if (album) {
 			return (
 				<>
 					<Head>
-						<title>{`Next Spotify | ${name}`}</title>
+						<title>{`Next Spotify | ${album.name}`}</title>
 					</Head>
 					<Layout>
 						<div className={container}>
@@ -88,6 +92,12 @@ export default function Album() {
 							</div>
 							<hr />
 							<AlbumTable data={album.tracks.items} />
+							<div className={albumFooter}>
+								<span className={`${textSm} ${textMuted} ${textBold}`}>
+									{dateToString(album.release_date)}
+								</span>
+								<span className={`${textSm} ${textMuted}`}>{album.label}</span>
+							</div>
 						</div>
 					</Layout>
 				</>
@@ -96,7 +106,7 @@ export default function Album() {
 		return (
 			<>
 				<Head>
-					<title>{`Next Spotify | ${name}`}</title>
+					<title>{`Next Spotify | Album`}</title>
 				</Head>
 				<Layout>
 					<div className={container}>

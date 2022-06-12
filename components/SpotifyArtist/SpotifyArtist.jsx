@@ -2,12 +2,14 @@ import Image from 'next/image';
 
 import { truncateString } from '../../lib/utils';
 
-import { card, playButton, image } from './SpotifyArtist.module.css';
+import { image } from './SpotifyArtist.module.css';
 import {
 	textWhite,
 	textMuted,
 	textBold,
 	textSm,
+	card,
+	playButton,
 } from '../../styles/utils.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,7 +36,9 @@ export default function SpotifyItem({ data, setContext }) {
 				className={image}
 				alt='Artist Photo'
 			></Image>
-			<p className={`${textWhite} ${textBold}`}>{truncateString(data.name, 15)}</p>
+			<p className={`${textWhite} ${textBold}`}>
+				{truncateString(data.name, 15)}
+			</p>
 			<p className={`${textMuted} ${textBold} ${textSm}`}>Artist</p>
 			<div className={playButton}>
 				<FontAwesomeIcon icon={faPlay} fontSize='25'></FontAwesomeIcon>

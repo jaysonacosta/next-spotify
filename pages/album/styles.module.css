@@ -24,3 +24,8 @@
 	gap: 20px;
 	row-gap: 20px;
 }
+.albumFooter {
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+}

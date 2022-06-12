@@ -3,12 +3,13 @@ import Link from 'next/link';
 
 import { truncateString } from '../../lib/utils';
 
-import { card, playButton } from './SpotifyItem.module.css';
 import {
 	textWhite,
 	textMuted,
 	textBold,
 	textSm,
+	card,
+	playButton,
 } from '../../styles/utils.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
