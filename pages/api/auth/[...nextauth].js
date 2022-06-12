@@ -9,6 +9,19 @@ const SPOTIFY_AUTHORIZATION_URL =
 		response_type: 'code',
 	});
 
+const scope = [
+	'user-read-email',
+	'user-read-recently-played',
+	'user-top-read',
+	'streaming',
+	'user-read-private',
+	'user-read-playback-state',
+	'user-modify-playback-state',
+	'user-library-read',
+	'user-library-modify',
+	'user-read-currently-playing',
+];
+
 async function refreshAccessToken(token) {
 	try {
 		const url =
@@ -52,6 +65,7 @@ export default NextAuth({
 		SpotifyProvider({
 			clientId: process.env.SPOTIFY_CLIENT_ID,
 			clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+			authorization: { params: { scope } },
 		}),
 	],
 	callbacks: {
