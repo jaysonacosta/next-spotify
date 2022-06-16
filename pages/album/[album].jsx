@@ -1,9 +1,13 @@
+import { useState } from 'react';
+
 import Head from 'next/head';
 import Image from 'next/image';
 
 import Layout from '../../components/Layout';
 import AlbumTable from '../../components/Tables/AlbumTable';
 import AlbumSkeleton from '../../components/Skeletons/AlbumSkeleton';
+
+import { prominent, average } from 'color.js';
 
 import { dateToString } from '../../lib/utils';
 
@@ -43,6 +47,7 @@ const revalidate = {
 
 export default function Album() {
 	const { data: session } = useSession();
+	const [albumColor, setColor] = useState('');
 
 	const router = useRouter();
 	const { album: id } = router.query;
@@ -53,6 +58,15 @@ export default function Album() {
 		revalidate
 	);
 
+	const getColor = async (url) => {
+		const color = await average(url, { amount: 1, format: 'hex' });
+		setColor(color);
+	};
+
+	if (album) {
+		getColor(album.images[0].url);
+	}
+
 	if (session) {
 		if (album) {
 			return (
@@ -61,7 +75,12 @@ export default function Album() {
 						<title>{`Next Spotify | ${album.name}`}</title>
 					</Head>
 					<Layout>
-						<div className={container}>
+						<div
+							className={container}
+							style={{
+								background: `linear-gradient(${albumColor} 0%, #ffffff00 450px)`,
+							}}
+						>
 							<div className={albumHeader}>
 								<Image
 									src={album.images[0].url}
