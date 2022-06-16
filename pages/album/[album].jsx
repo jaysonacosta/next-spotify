@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Layout from '../../components/Layout';
 import AlbumTable from '../../components/Tables/AlbumTable';
+import AlbumSkeleton from '../../components/Skeletons/AlbumSkeleton';
 
 import { dateToString } from '../../lib/utils';
 
@@ -51,7 +52,7 @@ export default function Album() {
 		fetcher,
 		revalidate
 	);
-	
+
 	if (session) {
 		if (album) {
 			return (
@@ -110,13 +111,7 @@ export default function Album() {
 				</Head>
 				<Layout>
 					<div className={container}>
-						<p className={`${textWhite} ${textBold} ${textSm}`}>ALBUM</p>
-						<p className={`${textWhite} ${textBold} ${textXxl} ${mt0}`}>
-							{name}
-						</p>
-						<div className={itemContainer}>
-							<p className={`${textWhite} ${textBold}`}>Loading...</p>
-						</div>
+						<AlbumSkeleton />
 					</div>
 				</Layout>
 			</>
