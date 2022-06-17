@@ -44,3 +44,44 @@
 	background-color: var(--black-light);
 	border-radius: 0.25em;
 }
+
+.logo {
+}
+
+@media screen and (max-width: 1120px) {
+	.wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 70px;
+		padding: 0;
+		z-index: 1;
+		background: linear-gradient(#ffffff00 0%, #000);
+	}
+	.wrapper hr {
+		display: none;
+	}
+	.wrapper .logo {
+		display: none;
+	}
+	.sidebarElement {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 0.75rem;
+		padding: 0.5rem;
+		min-width: 85px;
+	}
+	.icon {
+		margin: 0 0 5px 0;
+	}
+	.playlistsWrapper {
+		display: none;
+	}
+}

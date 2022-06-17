@@ -1,8 +1,19 @@
 .container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
 	height: 80px;
 	background-color: #000;
+}
+
+@media screen and (max-width: 1120px) {
+	.container {
+		bottom: 80px;
+		border-radius: 0.25rem;
+		width: 90%;
+		height: 60px;
+		margin: auto;
+		overflow: hidden;
+	}
 }

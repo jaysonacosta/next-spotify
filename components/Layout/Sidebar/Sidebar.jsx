@@ -8,7 +8,7 @@ import {
 	playlistElement,
 	icon,
 	playlistsWrapper,
-	playlistItems,
+	logo,
 } from './Sidebar.module.css';
 
 import {
@@ -52,7 +52,7 @@ export default function Sidebar() {
 	if (session) {
 		return (
 			<div className={wrapper}>
-				<div className={sidebarElement}>
+				<div className={`${sidebarElement} ${logo}`}>
 					<Image
 						src={`${spotifyBranding}/Spotify_Logo_RGB_White.png`}
 						alt='Spotify Logo'

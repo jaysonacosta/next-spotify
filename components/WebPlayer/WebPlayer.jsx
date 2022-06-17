@@ -7,14 +7,14 @@ import { useSpotifyContext } from '../../context/spotifyState';
 const spotifyPlayerStyles = {
 	bgColor: '#292424',
 	color: '#fff',
-	height: 80,
+	height: '80px',
 	trackNameColor: '#fff',
 };
 
 export default function WebPlayer() {
 	const { data: session } = useSession();
 	const [musicQueue, updateQueue] = useSpotifyContext();
-
+	
 	if (session) {
 		return (
 			<div className={container}>
