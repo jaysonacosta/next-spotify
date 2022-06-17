@@ -14,6 +14,7 @@ const spotifyPlayerStyles = {
 export default function WebPlayer() {
 	const { data: session } = useSession();
 	const [musicQueue, updateQueue] = useSpotifyContext();
+
 	if (session) {
 		return (
 			<div className={container}>
@@ -21,12 +22,12 @@ export default function WebPlayer() {
 					token={session.accessToken}
 					uris={musicQueue}
 					styles={spotifyPlayerStyles}
-					autoPlay={false}
+					autoPlay={true}
 					syncExternalDevice={true}
 					persistDeviceSelection={true}
 					name={'Next Spotify'}
 					showSaveIcon={true}
-				></SpotifyPlayer>
+				/>
 			</div>
 		);
 	}

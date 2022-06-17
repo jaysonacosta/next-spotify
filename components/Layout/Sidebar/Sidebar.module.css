@@ -1,6 +1,7 @@
 .wrapper {
 	position: fixed;
-	min-height: 100vh;
+	top: 0;
+	bottom: 0;
 	min-width: 250px;
 	background-color: var(--true-black);
 	padding-top: 24px;
@@ -23,8 +24,9 @@
 	margin: 0;
 }
 .playlistsWrapper {
-	height: 1000px;
+	height: 100%;
 	overflow-y: scroll;
+	position: absolute;
 }
 .playlistElement {
 	padding: 0.5rem 1rem;
