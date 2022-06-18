@@ -25,10 +25,12 @@ import { useSpotifyContext } from '../../../context/spotifyState';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faE } from '@fortawesome/free-solid-svg-icons';
+import { useWindow } from '../../../hooks/useWindow';
 
 export default function AlbumTable({ data }) {
 	const [musicQueue, updateQueue] = useSpotifyContext();
-	
+	const windowSize = useWindow();
+
 	return (
 		<div className={table}>
 			<div className={`${tableRow} ${textMuted} ${textSm}`}>
@@ -55,7 +57,10 @@ export default function AlbumTable({ data }) {
 							</div>
 							<div className={`${titleElement} ${textWhite}`}>
 								<div className={songInfo}>
-									{truncateString(track.name, 75)}
+									{truncateString(
+										track.name,
+										windowSize.innerWidth >= 1120 ? 75 : 35
+									)}
 									<div className={songArtist}>
 										{track.explicit && (
 											<FontAwesomeIcon

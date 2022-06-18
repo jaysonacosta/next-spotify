@@ -13,7 +13,7 @@ import { dateToString } from '../../lib/utils';
 
 import {
 	container,
-	itemContainer,
+	albumName,
 	albumHeader,
 	albumInfo,
 	albumArtist,
@@ -92,7 +92,9 @@ export default function Album() {
 									<span className={`${textWhite} ${textSm} ${textBold}`}>
 										{album.album_type.toUpperCase()}
 									</span>
-									<span className={`${textWhite} ${textXxl} ${textBold}`}>
+									<span
+										className={`${textWhite} ${textXxl} ${textBold} ${albumName}`}
+									>
 										{album.name}
 									</span>
 									<div className={`${albumArtist} ${textWhite}`}>

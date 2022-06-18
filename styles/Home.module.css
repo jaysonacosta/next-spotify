@@ -5,3 +5,10 @@
 	display: flex;
 	flex-direction: column;
 }
+
+@media screen and (max-width: 1120px) {
+	.container {
+		margin-top: 30px;
+		padding-bottom: 150px;
+	}
+}

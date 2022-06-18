@@ -21,11 +21,13 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useWindow } from '../../../hooks/useWindow';
 
 export default function Navbar({ updateQuery }) {
 	const [isActive, setState] = useState(false);
 	const { data: session } = useSession();
 	const router = useRouter();
+
 	if (session) {
 		return (
 			<div className={wrapper}>

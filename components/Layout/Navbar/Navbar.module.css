@@ -58,3 +58,16 @@
 .menuItem:hover {
 	background-color: var(--black-light);
 }
+
+@media screen and (max-width: 1120px) {
+	.wrapper {
+		justify-content: space-between;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	.search {
+		border-radius: 5px;
+		width: 200px;
+	}
+}

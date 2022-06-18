@@ -29,3 +29,17 @@
 	display: flex;
 	flex-direction: column;
 }
+
+@media screen and (max-width: 1120px) {
+	.container {
+		margin-top: 70px;
+		padding-bottom: 150px;
+	}
+	.albumHeader {
+		flex-direction: column;
+		padding-bottom: 0;
+	}
+	.albumName {
+		font-size: 1.5rem;
+	}
+}

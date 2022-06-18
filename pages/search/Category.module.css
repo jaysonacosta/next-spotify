@@ -7,3 +7,14 @@
 	gap: 20px;
 	row-gap: 20px;
 }
+
+@media screen and (max-width: 1120px) {
+	.container {
+		padding-bottom: 150px;
+	}
+	.itemContainer {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}
