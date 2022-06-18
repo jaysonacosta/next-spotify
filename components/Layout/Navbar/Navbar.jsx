@@ -32,8 +32,6 @@ export default function Navbar({ updateQuery }) {
 	const { data: session } = useSession();
 	const router = useRouter();
 
-	console.log(session);
-
 	if (session) {
 		return (
 			<div className={wrapper}>
