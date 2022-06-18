@@ -40,7 +40,7 @@
 	position: absolute;
 	top: 60px;
 	right: 0;
-	height: 100px;
+	height: auto;
 	width: 150px;
 	background-color: var(--black);
 	padding: 0.25em;
@@ -57,6 +57,9 @@
 }
 .menuItem:hover {
 	background-color: var(--black-light);
+}
+.image {
+	border-radius: 50%;
 }
 
 @media screen and (max-width: 1120px) {

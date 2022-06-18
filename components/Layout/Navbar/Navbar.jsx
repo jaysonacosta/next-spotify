@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 import {
 	wrapper,
 	navbarElement,
@@ -6,6 +9,7 @@ import {
 	menuItem,
 	iconWrapper,
 	search,
+	image,
 } from './Navbar.module.css';
 import {
 	btn,
@@ -27,6 +31,8 @@ export default function Navbar({ updateQuery }) {
 	const [isActive, setState] = useState(false);
 	const { data: session } = useSession();
 	const router = useRouter();
+
+	console.log(session);
 
 	if (session) {
 		return (
@@ -50,12 +56,25 @@ export default function Navbar({ updateQuery }) {
 							setState(!isActive);
 						}}
 					>
-						<FontAwesomeIcon
-							className={icon}
-							icon={faCircleUser}
-							fontSize='30'
-							color='white'
-						/>
+						{session.user.image ? (
+							<span className={icon}>
+								<Image
+									className={image}
+									src={session.user.image}
+									height={30}
+									width={30}
+									alt={'Profile image'}
+								/>
+							</span>
+						) : (
+							<FontAwesomeIcon
+								className={icon}
+								icon={faCircleUser}
+								fontSize='30'
+								color='white'
+							/>
+						)}
+
 						<span className={`${textWhite} ${textSm} ${textBold}`}>
 							{session.user.name}
 						</span>
@@ -63,12 +82,13 @@ export default function Navbar({ updateQuery }) {
 
 					{isActive && (
 						<div className={dropdownMenu}>
-							<div className={`${menuItem} ${textWhite} ${textSm}`}>
-								Profile
-							</div>
-							<div className={`${menuItem} ${textWhite} ${textSm}`}>
-								Settings
-							</div>
+							<Link href={'/profile'}>
+								<a>
+									<div className={`${menuItem} ${textWhite} ${textSm}`}>
+										Profile
+									</div>
+								</a>
+							</Link>
 							<div
 								className={`${menuItem} ${textWhite} ${textSm}`}
 								onClick={() => signOut()}
