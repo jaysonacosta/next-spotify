@@ -44,7 +44,8 @@ export default function SpotifyItem({ data, setContext }) {
 						{truncateString(data.album.artists[0].name, 20)}
 					</p>
 					<div
-						onClick={() => {
+						onClick={(e) => {
+							e.preventDefault();
 							updateQueue([data.uri]);
 						}}
 						className={playButton}
